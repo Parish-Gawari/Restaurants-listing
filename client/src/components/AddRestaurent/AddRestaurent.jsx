@@ -12,7 +12,7 @@ const AddRestaurent = () => {
     }, 1000);
   };
   const errorNotify = (msg) => {
-    toast(msg);
+    toast.error(msg);
   };
   const [formData, setFormData] = useState({
     name: "",
@@ -25,14 +25,12 @@ const AddRestaurent = () => {
     const newData = { ...formData };
     const regexNumber = /^[0-9]{10}$/;
     if (!regexNumber.test(formData.contact)) {
-      console.log("Plesae Enter a Valid Phone Number");
       errorNotify("Plesae Enter a Valid Phone Number");
       return;
     } else if (
       formData.name.trim().length == 0 ||
       formData.address.trim().length == 0
     ) {
-      console.log("Please Add Valid Details");
       errorNotify("Please Add Valid Details");
       return;
     } else {
