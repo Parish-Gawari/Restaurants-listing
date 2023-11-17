@@ -13,9 +13,15 @@ const AddRestaurent = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     const newData = { ...formData };
-    const regexNumber = /^[0-9]+$/;
+    const regexNumber = /^[0-9]{10}$/;
     if (!regexNumber.test(formData.contact)) {
       console.log("Plesae Enter a Valid Phone Number");
+      return;
+    } else if (
+      formData.name.trim().length == 0 ||
+      formData.address.trim().length == 0
+    ) {
+      console.log("Please Add Valid Details");
       return;
     } else {
       axios
@@ -45,7 +51,7 @@ const AddRestaurent = () => {
             className="border rounded p-2"
             value={formData.name}
             onChange={(e) => {
-              setFormData({ ...formData, name: e.target.value });
+              setFormData({ ...formData, name: e.target.value.trim() });
             }}
             required
           />
@@ -59,7 +65,7 @@ const AddRestaurent = () => {
             className="border rounded p-2"
             value={formData.address}
             onChange={(e) => {
-              setFormData({ ...formData, address: e.target.value });
+              setFormData({ ...formData, address: e.target.value.trim() });
             }}
             required
           />
