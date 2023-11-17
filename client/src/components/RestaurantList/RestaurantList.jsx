@@ -28,7 +28,7 @@ const RestaurantList = () => {
 
   const modalDeleteHandler = (id) => {
     axios
-      .delete(`http://localhost:8090/crud/${id}`)
+      .delete(`http://localhost:8090/crud/delete/${id}`)
       .then((result) => {
         setToggle(!toggle);
       })
@@ -47,7 +47,7 @@ const RestaurantList = () => {
 
   const editModelHandler = (id, data) => {
     axios
-      .put(`http://localhost:8090/crud/${id}`, data)
+      .put(`http://localhost:8090/crud/update/${id}`, data)
       .then((result) => {
         console.log("Data Updated Successfully");
       })
@@ -55,12 +55,13 @@ const RestaurantList = () => {
         console.log(error);
       });
     setEditToggle(!editToggle);
+    setCurrentData();
   };
 
   return (
     <>
       <div
-        className="d-flex flex-column flex-wrap flex-md-row p-4 gap-4  h-100 "
+        className="d-flex flex-column flex-wrap flex-md-row p-2 gap-3  my-4 h-100 mx-2   align-content-center  justify-content-center  "
         style={{ marginLeft: "1.5rem" }}>
         {list &&
           list.map((ele) => (

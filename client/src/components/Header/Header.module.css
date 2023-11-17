@@ -1,0 +1,13 @@
+.linkStyle {
+    text-decoration: none;
+    color: white;
+}
+
+.linkStyle:hover {
+    color: bisque;
+}
+
+.activeLink {
+    color: blanchedalmond;
+    font-weight: 600;
+}

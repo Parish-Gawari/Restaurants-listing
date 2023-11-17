@@ -1,16 +1,19 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import styles from "./Header.module.css";
 
 const Header = () => {
+  const linkClasses = ({ isActive }) =>
+    isActive ? styles.activeLink : styles.linkStyle;
   return (
     <header className=" bg-dark text-white p-3">
-      <nav className="d-flex list-unstyled gap-2">
-        <Link to={"/"}>
-          <li>HOME</li>
-        </Link>
-        <Link to={"/add"}>
-          <li>ADD</li>
-        </Link>
+      <nav className="d-flex gap-3">
+        <NavLink to={"/"} className={linkClasses}>
+          HOME
+        </NavLink>
+        <NavLink to={"/add"} className={linkClasses}>
+          ADD
+        </NavLink>
       </nav>
     </header>
   );

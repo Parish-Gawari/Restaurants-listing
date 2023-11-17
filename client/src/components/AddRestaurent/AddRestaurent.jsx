@@ -19,7 +19,7 @@ const AddRestaurent = () => {
       return;
     } else {
       axios
-        .post("http://localhost:8090/crud", newData)
+        .post("http://localhost:8090/crud/postData", newData)
         .then((res) => {
           navigate("/");
           return;
