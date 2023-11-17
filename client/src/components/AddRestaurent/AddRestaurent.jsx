@@ -18,11 +18,9 @@ const AddRestaurent = () => {
       console.log("Plesae Enter a Valid Phone Number");
       return;
     } else {
-      console.log("Data Added Successfully");
       axios
         .post("http://localhost:8090/crud", newData)
         .then((res) => {
-          console.log("Successfully Added");
           navigate("/");
           return;
         })
