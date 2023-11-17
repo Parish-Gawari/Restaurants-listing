@@ -60,9 +60,7 @@ const RestaurantList = () => {
 
   return (
     <>
-      <div
-        className="d-flex flex-column flex-wrap flex-md-row p-2 gap-3  my-4 h-100 mx-2   align-content-center  justify-content-center  "
-        style={{ marginLeft: "1.5rem" }}>
+      <div className="d-flex flex-column flex-wrap flex-md-row p-2 gap-3  my-4 h-100 mx-2   align-content-center  justify-content-center ">
         {list &&
           list.map((ele) => (
             <div

@@ -1,9 +1,19 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 
 const AddRestaurent = () => {
   const navigate = useNavigate();
+  const notify = () => {
+    toast("Restaurant Added SuccessFully");
+    setTimeout(() => {
+      navigate("/");
+    }, 1000);
+  };
+  const errorNotify = (msg) => {
+    toast(msg);
+  };
   const [formData, setFormData] = useState({
     name: "",
     address: "",
@@ -16,22 +26,24 @@ const AddRestaurent = () => {
     const regexNumber = /^[0-9]{10}$/;
     if (!regexNumber.test(formData.contact)) {
       console.log("Plesae Enter a Valid Phone Number");
+      errorNotify("Plesae Enter a Valid Phone Number");
       return;
     } else if (
       formData.name.trim().length == 0 ||
       formData.address.trim().length == 0
     ) {
       console.log("Please Add Valid Details");
+      errorNotify("Please Add Valid Details");
       return;
     } else {
       axios
         .post("http://localhost:8090/crud/postData", newData)
         .then((res) => {
-          navigate("/");
+          notify();
           return;
         })
         .then((error) => {
-          console.log(error);
+          errorNotify(error.message);
           return;
         });
     }
@@ -86,6 +98,7 @@ const AddRestaurent = () => {
         </div>
         <button className="bg-info border-0  rounded p-2 mt-2">Submit</button>
       </form>
+      <ToastContainer autoClose={800} />
     </div>
   );
 };
